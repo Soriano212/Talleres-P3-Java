@@ -24,7 +24,8 @@ public class Main {
         System.out.println("1) Agregar Persona");
         System.out.println("2) Listar personas por nombre según último dígito");
         System.out.println("3) Obtener Persona");
-        System.out.println("4) Salir");
+        System.out.println("4) Validar Cédula");
+        System.out.println("5) Salir");
 
         int opcion = scanner.nextInt();
         scanner.nextLine();
@@ -42,6 +43,9 @@ public class Main {
                 obtenerPersona();
                 break;
             case 4:
+                validarCedula();
+                break;
+            case 5:
                 System.out.println("Programa finalizado.");
                 continuar = false;
                 break;
@@ -112,5 +116,16 @@ public class Main {
     public static void pause() {
         System.out.println("Presione Enter para continuar...");
         scanner.nextLine();  // Espera que el usuario presione Enter
+    }
+
+    public static void validarCedula() {
+        System.out.print("Ingrese el número de cédula: ");
+        String numeroDeCedula = scanner.nextLine();
+        boolean valido = Persona.validarCedula(numeroDeCedula);
+        if (valido) {
+            System.out.println("Cédula válida.");
+        } else {
+            System.out.println("Cédula inválida.");
+        }
     }
 }
